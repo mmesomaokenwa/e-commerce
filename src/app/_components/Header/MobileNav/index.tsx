@@ -33,7 +33,7 @@ const MobileNav: React.FC<{ header: HeaderType }> = ({ header }) => {
   return (
     <>
       <div
-        className={[classes.mobileBar, show ? classes.active : ''].filter(Boolean).join(' ')}
+        className={[classes.mobileBar, width > 768 && classes.hide, show ? classes.active : ''].filter(Boolean).join(' ')}
         onClick={() => setShow(!show)}
       >
         <div></div>
@@ -43,7 +43,7 @@ const MobileNav: React.FC<{ header: HeaderType }> = ({ header }) => {
       <nav
         className={[
           classes.nav,
-          user === undefined || (width > 1024 && classes.hide),
+          user === undefined || (width > 768 && classes.hide),
           show ? classes.show : '',
         ]
           .filter(Boolean)

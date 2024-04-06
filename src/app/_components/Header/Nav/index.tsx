@@ -33,7 +33,7 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
     <nav
       className={[
         classes.nav,
-        user === undefined || width < 1024 && classes.hide,
+        user === undefined || width < 768 && classes.hide,
       ]
         .filter(Boolean)
         .join(' ')}
