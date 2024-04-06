@@ -1,5 +1,17 @@
 @use '../../_css/common.scss' as *;
 
-.message {
-  margin-bottom: calc(var(--base) * 1.5);
+.container {
+  width: 100%;
+  margin-top: 50px;
+
+  @include small-break {
+    margin-top: 30px;
+  }
+}
+
+.loadingPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px);
 }
