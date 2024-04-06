@@ -15,17 +15,17 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
   const navItems = header?.navItems || []
   const { user } = useAuth()
 
-  const [width, setWidth] = useState(window.innerWidth)
+  const [width, setWidth] = useState(window?.innerWidth)
 
   const handleResize = () => {
-    setWidth(window.innerWidth)
+    setWidth(window?.innerWidth)
   }
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize)
+    window?.addEventListener('resize', handleResize)
 
     return () => {
-      window.removeEventListener('resize', handleResize)
+      window?.removeEventListener('resize', handleResize)
     }
   }, [])
 
