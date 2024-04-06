@@ -1,5 +1,11 @@
+@import '../../../_css/common';
+
 .header {
   padding: 36px 0;
+
+  @include small-break {
+    padding: 24px 0;
+  }
 }
 
 .wrap {

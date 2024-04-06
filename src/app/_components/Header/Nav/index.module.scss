@@ -1,4 +1,5 @@
 @use '../../../_css/queries.scss' as *;
+@import '../../../_css/common';
 
 .nav {
   display: flex;
@@ -11,6 +12,10 @@
 
   > * {
     text-decoration: none;
+  }
+
+  @include small-break {
+    display: none;
   }
 }
 

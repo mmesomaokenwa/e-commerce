@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 
 import { Header as HeaderType, User } from '../../../../payload/payload-types'
@@ -15,25 +15,11 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
   const navItems = header?.navItems || []
   const { user } = useAuth()
 
-  const [width, setWidth] = useState(0)
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth)
-    }
-
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
-
   return (
     <nav
       className={[
         classes.nav,
-        user === undefined || width < 768 && classes.hide,
+        user === undefined && classes.hide,
       ]
         .filter(Boolean)
         .join(' ')}
@@ -41,7 +27,6 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
       {navItems.map(({ link }, i) => {
         return <CMSLink key={i} {...link} appearance="none" />
       })}
-      {/* <CartLink /> */}
       {user && <Link href="/account">Account</Link>}
       {!user && <Button
         el="link"
@@ -50,7 +35,7 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
         appearance="primary"
         onClick={() => (window.location.href = '/login')}
       />}
-      {user && <CartLink />}
+      {/* {user && <CartLink />} */}
     </nav>
   )
 }
