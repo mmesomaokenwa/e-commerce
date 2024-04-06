@@ -16,17 +16,17 @@ const MobileNav: React.FC<{ header: HeaderType }> = ({ header }) => {
   const { user } = useAuth()
 
   const [show, setShow] = useState(false)
-  const [width, setWidth] = useState(window?.innerWidth)
-
-  const handleResize = () => {
-    setWidth(window?.innerWidth)
-  }
+  const [width, setWidth] = useState(0)
 
   useEffect(() => {
-    window?.addEventListener('resize', handleResize)
+    const handleResize = () => {
+      setWidth(window.innerWidth)
+    }
+
+    window.addEventListener('resize', handleResize)
 
     return () => {
-      window?.removeEventListener('resize', handleResize)
+      window.removeEventListener('resize', handleResize)
     }
   }, [])
 
